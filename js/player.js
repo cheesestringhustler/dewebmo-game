@@ -9,6 +9,7 @@ class Player extends Component {
         this.spritesWalk = ['images/player/Player_walk1.png', 'images/player/Player_walk2.png', 'images/player/Player_walk3.png'];
         this.spritesDeath = ['images/player/Player_hit1.png', 'images/player/Player_hit2.png', 'images/player/Player_hit3.png'];
         this.direction = 1;
+        this.score = 0;
     }
 
     async deathAni() {
@@ -17,6 +18,13 @@ class Player extends Component {
             await this.waitforme(350);
         }
         this.elem.innerHTML = "";
+        document.getElementById("gameOverScreen").classList.remove("hidden");
+        document.getElementById("highscore").innerText = "High Score: "+this.score;
+    }
+
+    increaseScore() {
+        this.score++;
+        document.getElementById("score").textContent = "Score: " + this.score;
     }
 
     tick(commands) {
@@ -74,8 +82,9 @@ class Player extends Component {
 
                             const id = "platorm_" + Platforms.length + 1;
                             if (this.lastPlatform != this.currentPlatform) {
-                                this.spawnPlatform(id, this.currentPlatform);
+                                spawnPlatform(id, this.currentPlatform);
                                 this.lastPlatform = this.currentPlatform;
+                                this.increaseScore();
                             }
                         }
 
@@ -145,16 +154,26 @@ class Player extends Component {
             }
 
             // Camera scrolling
-            if (this.x > window.innerWidth / 3) {
-                window.scrollTo(this.x - (window.innerWidth / 3), 0);
-                document.getElementById("parallax").scrollTo(this.x - (window.innerWidth / 3), 0);
-                document.body.style.width = windowRight + this.x + 'px';
-
+            if (this.x > window.innerWidth / 2) {
+                window.scrollTo(this.x - (window.innerWidth / 2), 0);
+                document.getElementById("parallax").scrollTo(this.x - (window.innerWidth / 2), 0);
+                let newWidth = windowRight + this.x + 'px';
+                document.body.style.width = newWidth;
+                // document.getElementById("parallax").style.width = newWidth;
+                // document.getElementById("mountains").style.width = newWidth;
                 //spawn new clouds
                 if (this.x % 500 == 0) {
-                    spawnCloud(windowRight + this.x)
+                    spawnCloud(windowRight + this.x + 550)
+                }
+                if (this.x % 4000 == 0) {
+                    spawnMountain(windowRight + this.x + 6000)
                 }
             }
+
+            // if (this.y < window.innerWidth / 3) {
+            //     window.scrollTo(0, this.y - (window.innerHeight / 2));
+            //     document.body.style.height = windowBottom + this.y + 'px';
+            // }
 
             //Sprite Animation
             if (this.oldx != this.x) {

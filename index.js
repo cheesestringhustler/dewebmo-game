@@ -7,10 +7,10 @@ const ms = 1000 / fps;
 
 let gameOver = false;
 
-const player = new Player('player', 10, window.innerHeight - 300, 100, 150, null, false);
+const player = new Player('player', 10, window.innerHeight - 300, 80, 150, null, false);
 
 let Floors = [
-    new Platform('platform_floor', 0, window.innerHeight - 50, 300, 50, 'platform', true, ['floor.png']),
+    new Platform('platform_floor', 0, window.innerHeight - 50, 300, 50, 'floor', true, ['floor.png']),
 ];
 
 let Platforms = [

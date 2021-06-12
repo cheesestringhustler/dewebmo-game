@@ -54,12 +54,4 @@ class Component {
         }
         return true;
     }
-
-    spawnPlatform(id, p) {
-        Platforms.push(
-            new Platform(id, p.x + 350, p.y, 200, 200, 'platform', true, ['thwomp_1.png', 'thwomp_2.png', 'thwomp_3.png', 'thwomp_4.png', 'thwomp_5.png', 'thwomp_6.png'])
-        );
-        // const index = p.getIndex();
-        // Platforms[index].kinetic = false;
-    }
 }

@@ -18,10 +18,10 @@
     width: 150px;
     background-image: url("../images/brgs/cloud.png");
     background-size: contain;
-    background-repeat: repeat-x;
+    background-repeat: no-repeat;
 }
 
-#mountains {
+.mountain {
     position: absolute;
     bottom: calc(-68vh);;
     left: 0px;
