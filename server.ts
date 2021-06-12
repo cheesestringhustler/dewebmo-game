@@ -52,8 +52,8 @@ app.get("/getScores", function (req, res) {
     highscores.sort((a, b) => (b.score - a.score));
     // let top10 = highscores.slice(0, 10);
 
-    console.log("Listing:");
-    console.log(highscores);
+    console.log("Listing " + highscores.length + " scores");
+    // console.log(highscores);
 
     res.json(highscores);
   });
