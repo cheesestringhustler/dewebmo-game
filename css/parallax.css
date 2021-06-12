@@ -10,23 +10,12 @@
     background-position: center;
 }
 
-#cloud {
+.cloud {
     position: absolute;
-    top: 200px;
+    top: 0px;
     left: 400px;
-    height: 200px;
-    width: 200px;
-    background-image: url("../images/brgs/cloud.png");
-    background-size: contain;
-    background-repeat: repeat-x;
-}
-
-#cloud2 {
-    position: absolute;
-    top: 50px;
-    left: 800px;
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     background-image: url("../images/brgs/cloud.png");
     background-size: contain;
     background-repeat: repeat-x;
@@ -34,9 +23,9 @@
 
 #mountains {
     position: absolute;
-    bottom: 0px;
+    bottom: calc(-68vh);;
     left: 0px;
-    height: 200px;
+    height: 500px;
     width: 4200px;
     background-image: url("../images/brgs/mountains.png");
     background-size: contain;

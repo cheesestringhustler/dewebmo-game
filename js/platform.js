@@ -1,15 +1,15 @@
 class Platform extends Component {
-    constructor(id, x, y, width, height, className, kinetic) {
+    constructor(id, x, y, width, height, className, kinetic, sprites) {
         super(id, x, y, width, height, className, kinetic);
         this.currentSprite = 0;
         this.spritePath = "images/objects/";
-        this.sprites = ['thwomp_1.png', 'thwomp_2.png', 'thwomp_3.png', 'thwomp_4.png', 'thwomp_5.png', 'thwomp_6.png'];
-        this.elem.innerHTML = this.getImgHTML(this.spritePath + this.sprites[0]);
+        this.sprites = sprites;
+        this.elem.innerHTML = this.getImgHTML(this.spritePath + this.sprites[0], "");
     }
 
     async fallAni() {
         for (let i = 1; i < 5; i++) {
-            this.elem.innerHTML = this.getImgHTML(this.spritePath + this.sprites[i]);
+            this.elem.innerHTML = this.getImgHTML(this.spritePath + this.sprites[i], "");
             await this.waitforme(2000/5);
         }
         await this.waitforme(500);

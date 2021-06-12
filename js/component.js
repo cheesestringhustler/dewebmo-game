@@ -18,10 +18,10 @@ class Component {
         div.style.width = width;
         div.style.height = height;
         this.kinetic = kinetic;
-        if (kinetic) {
+        // if (kinetic) {
             // div.style.left = x;
             // div.style.top = y;
-        }
+        // }
         document.getElementById("body").appendChild(div);
         this.height = height;
         this.width = width;
@@ -39,7 +39,7 @@ class Component {
     }
 
     getImgHTML(src, style) {
-        return '<img src="' + src + '" style="'+style+'" height="100%" width="100%"/>'
+        return '<img src="' + src + '" style="'+style+'" height="100%" width="auto"/>'
     }
 
     waitforme(milisec) {
@@ -57,7 +57,7 @@ class Component {
 
     spawnPlatform(id, p) {
         Platforms.push(
-            new Platform(id, p.x + 350, p.y, 100, 100, 'platform')
+            new Platform(id, p.x + 350, p.y, 200, 200, 'platform', true, ['thwomp_1.png', 'thwomp_2.png', 'thwomp_3.png', 'thwomp_4.png', 'thwomp_5.png', 'thwomp_6.png'])
         );
         // const index = p.getIndex();
         // Platforms[index].kinetic = false;

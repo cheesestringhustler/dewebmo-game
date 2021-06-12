@@ -7,10 +7,14 @@ const ms = 1000 / fps;
 
 let gameOver = false;
 
-const player = new Player('player', 10, 900, 100, 100, null, false);
+const player = new Player('player', 10, window.innerHeight - 300, 100, 150, null, false);
+
+let Floors = [
+    new Platform('platform_floor', 0, window.innerHeight - 50, 300, 50, 'platform', true, ['floor.png']),
+];
 
 let Platforms = [
-    new Platform('platform1', 200, window.innerHeight - 200, 100, 100, 'platform')
+    new Platform('platform1', 500, window.innerHeight - 250, 200, 200, 'platform', true, ['thwomp_1.png', 'thwomp_2.png', 'thwomp_3.png', 'thwomp_4.png', 'thwomp_5.png', 'thwomp_6.png'])
 ];
 
 // document.body.style.width = '2000px';
