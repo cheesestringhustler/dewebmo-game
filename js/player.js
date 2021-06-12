@@ -19,8 +19,27 @@ class Player extends Component {
             await this.waitforme(350);
         }
         this.elem.innerHTML = "";
+        this.loadGameScreen();
+    }
+    
+    loadGameScreen() {
         document.getElementById("gameOverScreen").classList.remove("hidden");
         document.getElementById("highscore").innerText = "High Score: "+this.score;
+        let highscoreList = document.getElementById("highscoreList");
+
+        getScores().then((scores) => {
+            let list = document.createElement("ol");
+            scores.forEach(score => {
+                let text = document.createElement("li");
+                text.textContent = score.name + ": " + score.score;
+                list.appendChild(text);
+            });
+            highscoreList.innerHTML = "";
+            highscoreList.appendChild(list);
+        })
+        .catch((err) => {
+            highscoreList.textContent = "no server available";
+        });
     }
 
     increaseScore() {

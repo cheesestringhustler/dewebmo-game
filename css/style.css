@@ -60,3 +60,9 @@ body {
 #gameOverScreen.hidden {
     display: none;
 }
+#highscoreList {
+    height: 195px;
+    overflow-y: scroll;
+    margin-bottom: 30px;
+
+}

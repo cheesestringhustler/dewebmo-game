@@ -26,7 +26,11 @@
     <div id="gameOverScreen" class="hidden">
         <h1>Game Over</h1>
         <h1 id="highscore">High Score: 43</h1>
-        <p>no server available</p>
+        <div style="display:flex; ">
+            <input id="inputName" type="text" />
+            <button id="inputBtn" onClick="saveScore();">Save Score</button>
+        </div>
+        <div id="highscoreList">no server available</div>
         <button onclick="location.reload();">Restart</button>
     </div>
 
@@ -40,6 +44,7 @@
     <script src="./js/component.js" type="text/javascript"></script>
     <script src="./js/player.js" type="text/javascript"></script>
     <script src="./js/platform.js" type="text/javascript"></script>
+    <script src="./js/highscore.js" type="text/javascript"></script>
     <script src="index.js" type="text/javascript"></script>
 </body>
 

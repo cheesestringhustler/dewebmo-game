@@ -42,4 +42,4 @@ onkeydown = onkeyup = (e) => {
     if (key === 'KeyW') commands.up = keydown ? true : keyup ? false : commands.up;
 };
 
-window.addEventListener("wheel", e => e.preventDefault(), { passive:false })
+// window.addEventListener("wheel", (e) => e.preventDefault(), { passive:false });
