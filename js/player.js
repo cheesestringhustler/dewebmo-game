@@ -13,6 +13,7 @@ class Player extends Component {
     }
 
     async deathAni() {
+        playAudio("dead");
         for (let i = 0; i < 3; i++) {
             this.elem.innerHTML = this.getImgHTML(this.spritesDeath[i]);
             await this.waitforme(350);
@@ -39,13 +40,16 @@ class Player extends Component {
             if (commands.left) {
                 this.x -= speed;
                 this.direction = -1;
+                
             }
             if (commands.right) {
                 this.x += speed;
                 this.direction = 1;
+                
             }
             if (commands.up && !this.jumping) {
                 this.vy = -jumpForce;
+                playAudio("jump");
             }
 
             this.vy += gravity;
@@ -183,6 +187,7 @@ class Player extends Component {
                     } else {
                         this.currentSprite = 0;
                     }
+                    playAudio("walk");
                 } else {
                     this.currentSprite = 0;
                 }

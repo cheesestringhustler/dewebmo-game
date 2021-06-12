@@ -8,6 +8,7 @@ class Platform extends Component {
     }
 
     async fallAni() {
+        playAudio("thwomp");
         for (let i = 1; i < 5; i++) {
             this.elem.innerHTML = this.getImgHTML(this.spritePath + this.sprites[i], "");
             await this.waitforme(2000/5);
