@@ -1,0 +1,41 @@
+html,
+body {
+    position: relative;
+    height: 100vh;
+    padding: 0px;
+    margin: 0px;
+}
+
+#player {
+    /* height: 100px;
+            width: 100px; */
+    background-color: red;
+    position: absolute;
+    /* bottom: 500px; */
+}
+
+#floor {
+    height: 200px;
+    width: 100vw;
+    background-color: brown;
+    bottom: 0px;
+    position: absolute;
+}
+
+.platform {
+    /* height: 100px;
+            width: 100px; */
+    /* bottom: 0px; */
+    position: absolute;
+    background-color: brown;
+    /* left: 250px; */
+}
+
+#platform {
+    /* bottom: 0px;
+            left: 250px; */
+}
+#platform2 {
+    bottom: 100px;
+    left: 500px;
+}
