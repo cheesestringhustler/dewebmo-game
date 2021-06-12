@@ -5,6 +5,8 @@ const jumpForce = 25;
 const fps = 60;
 const ms = 1000 / fps;
 
+let gameOver = false;
+
 const player = new Player('player', 10, 900, 100, 100, null, false);
 
 let Platforms = [

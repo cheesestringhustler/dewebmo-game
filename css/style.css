@@ -11,9 +11,13 @@ body {
     z-index: 10;
     /* height: 100px;
             width: 100px; */
-    background-color: red;
+    /* background-color: red; */
+    border: 1px solid;
     position: absolute;
     /* bottom: 500px; */
+}
+.spriteFlipped {
+    transform: scaleX(-1);
 }
 
 #floor {
@@ -30,7 +34,7 @@ body {
             width: 100px; */
     /* bottom: 0px; */
     position: absolute;
-    background-color: brown;
+    /* background-color: brown; */
     /* left: 250px; */
 }
 

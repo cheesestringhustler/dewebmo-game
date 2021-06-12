@@ -8,6 +8,8 @@ class Component {
         this.oldx = this.x;
         this.oldy = this.y;
         let div = document.createElement('div');
+        div.style.backgroundRepeat = 'no-repeat';
+        div.style.backgroundSize = 'contain';
         this.elem = div;
         div.id = id;
         if (className != null) {
@@ -36,4 +38,28 @@ class Component {
         this.anim.play();
     }
 
+    getImgHTML(src, style) {
+        return '<img src="' + src + '" style="'+style+'" height="100%" width="100%"/>'
+    }
+
+    waitforme(milisec) {
+        return new Promise(resolve => {
+            setTimeout(() => { resolve('') }, milisec);
+        })
+    }
+
+    rectIntersect(x1, y1, w1, h1, x2, y2, w2, h2) {
+        if (x2 > w1 + x1 || x1 > w2 + x2 || y2 > h1 + y1 || y1 > h2 + y2) {
+            return false;
+        }
+        return true;
+    }
+
+    spawnPlatform(id, p) {
+        Platforms.push(
+            new Platform(id, p.x + 350, p.y, 100, 100, 'platform')
+        );
+        // const index = p.getIndex();
+        // Platforms[index].kinetic = false;
+    }
 }
