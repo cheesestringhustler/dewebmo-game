@@ -6,6 +6,7 @@ let Platforms = [
     new Platform('platform1', 200, window.innerHeight - 200, 100, 100, 'platform')
 ];
 
+// document.body.style.width = '2000px';
 
 player.anim.onfinish = () => {
     //Player Movement

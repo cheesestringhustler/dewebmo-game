@@ -71,12 +71,14 @@ class Player extends Component {
         if (this.x < 0) { // Wall/Windows Collision || this.x + this.width > windowRight
             this.x = this.oldx;
         }
-
-
+        
         this.jumping = (this.y <= windowBottom && intersectingY == false);
         if (this.y > windowBottom) { // Ground/Window Collision
             this.vy = 0;
             this.y = windowBottom;
+            if (this.lastPlatform != null) {
+                console.log("game over")
+            }
         }
 
         if (this.jumping && this.vy < 0 && this.onPlatform) { // Jumping off platform FIXME: falling off platform does not onPlatform = false
@@ -85,17 +87,18 @@ class Player extends Component {
             spawnPlatform(id, this.lastPlatform);
         }
 
-        if (this.x > window.innerWidth / 2) { // Camera scrolling
-            window.scrollTo(this.x - (window.innerWidth / 2), 0);
+        if (this.x > window.innerWidth / 3) { // Camera scrolling
+            window.scrollTo(this.x - (window.innerWidth / 3), 0);
+            document.body.style.width = windowRight+this.x+'px';
         }
-
+   
         this.animate();
     }
 }
 
 function spawnPlatform(id, p) {
     Platforms.push(
-        new Platform(id, p.x + 250, p.y, 100, 100, 'platform')
+        new Platform(id, p.x + 350, p.y, 100, 100, 'platform')
     );
 
     const index = Platforms.findIndex(x => x.id == p.id);
