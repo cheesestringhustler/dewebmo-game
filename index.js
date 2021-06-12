@@ -1,4 +1,9 @@
+const speed = 6;
+const gravity = 1.0;
+const jumpForce = 25;
 
+const fps = 60;
+const ms = 1000 / fps;
 
 const player = new Player('player', 10, 900, 100, 100, null, false);
 
@@ -30,3 +35,5 @@ onkeydown = onkeyup = (e) => {
     if (key === 'KeyD') commands.right = keydown ? true : keyup ? false : commands.right;
     if (key === 'KeyW') commands.up = keydown ? true : keyup ? false : commands.up;
 };
+
+window.addEventListener("wheel", e => e.preventDefault(), { passive:false })

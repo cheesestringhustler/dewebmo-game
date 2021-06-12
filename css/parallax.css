@@ -1,0 +1,88 @@
+/* Elements */
+#brg {
+    z-index: 0;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../images/brgs/brg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#cloud {
+    position: absolute;
+    top: 200px;
+    left: 400px;
+    height: 200px;
+    width: 200px;
+    background-image: url("../images/brgs/cloud.png");
+    background-size: contain;
+    background-repeat: repeat-x;
+}
+
+#cloud2 {
+    position: absolute;
+    top: 50px;
+    left: 800px;
+    height: 200px;
+    width: 200px;
+    background-image: url("../images/brgs/cloud.png");
+    background-size: contain;
+    background-repeat: repeat-x;
+}
+
+#mountains {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 200px;
+    width: 4200px;
+    background-image: url("../images/brgs/mountains.png");
+    background-size: contain;
+    background-repeat: repeat-x;
+}
+
+/* https://keithclark.co.uk/articles/pure-css-parallax-websites/ */
+.parallax {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    -webkit-perspective: 300px;
+    perspective: 300px;
+    -webkit-perspective-origin-x: 100%;
+    perspective-origin-x: 100%;
+}
+
+.parallax__group {
+    position: relative;
+    transform-style: preserve-3d;
+    z-index: 5;
+    height: 100vh;
+}
+
+.parallax__layer {
+    position: absolute;
+    transform-origin-x: 100%;
+    -webkit-transform-origin-x: 100%;
+}
+
+.parallax__layer--base {
+    transform: translateZ(0);
+    z-index: 4;
+}
+
+.parallax__layer--back {
+    transform: translateZ(-300px) scale(2);
+    z-index: 3;
+}
+
+.parallax__layer--deep {
+    transform: translateZ(-600px) scale(3);
+    z-index: 2;
+}
+

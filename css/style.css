@@ -8,6 +8,7 @@ body {
 }
 
 #player {
+    z-index: 10;
     /* height: 100px;
             width: 100px; */
     background-color: red;
@@ -24,6 +25,7 @@ body {
 }
 
 .platform {
+    z-index: 10;
     /* height: 100px;
             width: 100px; */
     /* bottom: 0px; */

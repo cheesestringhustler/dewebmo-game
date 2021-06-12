@@ -1,6 +1,3 @@
-const fps = 60;
-const ms = 1000 / fps;
-
 class Component {
     constructor(id, x = 0, y = 0, width, height, className = null, kinetic = true) {
         this.id = id;

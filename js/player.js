@@ -1,6 +1,4 @@
-const speed = 6;
-const gravity = 1.0;
-const jumpForce = 25;
+
 
 class Player extends Component {
     constructor(id, x, y, width, height, className, kinetic) {
@@ -89,6 +87,7 @@ class Player extends Component {
 
         if (this.x > window.innerWidth / 3) { // Camera scrolling
             window.scrollTo(this.x - (window.innerWidth / 3), 0);
+            document.getElementById("parallax").scrollTo(this.x - (window.innerWidth / 3), 0);
             document.body.style.width = windowRight+this.x+'px';
         }
    
