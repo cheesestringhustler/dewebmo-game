@@ -168,12 +168,6 @@ class Player extends Component {
             // Jumping off platform FIXME: falling off platform does not onPlatform = false
             if (this.jumping && this.vy < 0 && this.onPlatform) {
                 this.onPlatform = false;
-
-                // const id = "platorm_" + Platforms.length + 1;
-                // if (this.lastPlatform != this.currentPlatform) {
-                //     this.spawnPlatform(id, this.currentPlatform);
-                //     this.lastPlatform = this.currentPlatform;
-                // }
             }
 
             // Camera scrolling
@@ -182,8 +176,7 @@ class Player extends Component {
                 document.getElementById("parallax").scrollTo(this.x - (window.innerWidth / 2), 0);
                 let newWidth = windowRight + this.x + 'px';
                 document.body.style.width = newWidth;
-                // document.getElementById("parallax").style.width = newWidth;
-                // document.getElementById("mountains").style.width = newWidth;
+
                 //spawn new clouds
                 if (this.x % 500 == 0) {
                     spawnCloud(windowRight + this.x + 550)
@@ -193,6 +186,7 @@ class Player extends Component {
                 }
             }
 
+            //TODO: try to adjust Y axis of camera
             // if (this.y < window.innerWidth / 3) {
             //     window.scrollTo(0, this.y - (window.innerHeight / 2));
             //     document.body.style.height = windowBottom + this.y + 'px';
