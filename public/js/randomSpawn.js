@@ -1,7 +1,9 @@
 function spawnPlatform(id, p) {
     const offsetLeft = getRandomInt(300, 500);
-    const offsetTop = getRandomInt(-50, 50);
+    const offsetTop = getRandomInt(-10, 50);
     
+    //TODO: check if new position is to high or too low
+
     Platforms.push(
         new Platform(id, p.x + offsetLeft, p.y - offsetTop, 200, 200, 'platform', true, ['thwomp_1.png', 'thwomp_2.png', 'thwomp_3.png', 'thwomp_4.png', 'thwomp_5.png', 'thwomp_6.png'])
     );
