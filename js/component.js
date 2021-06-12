@@ -18,9 +18,10 @@ class Component {
         }
         div.style.width = width;
         div.style.height = height;
+        this.kinetic = kinetic;
         if (kinetic) {
-            div.style.left = x;
-            div.style.top = y;
+            // div.style.left = x;
+            // div.style.top = y;
         }
         document.getElementById("body").appendChild(div);
         this.height = height;

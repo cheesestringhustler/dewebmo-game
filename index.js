@@ -2,9 +2,10 @@
 
 const player = new Player('player', 10, 900, 100, 100, null, false);
 
-const Platforms = [
-    new Platform('platform1', 200, window.innerHeight - 200, 100, 100, 'platform'),
+let Platforms = [
+    new Platform('platform1', 200, window.innerHeight - 200, 100, 100, 'platform')
 ];
+
 
 player.anim.onfinish = () => {
     //Player Movement

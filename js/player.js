@@ -1,13 +1,14 @@
-const speed = 4;
-const gravity = 0.5;
+const speed = 6;
+const gravity = 1.0;
+const jumpForce = 25;
 
 class Player extends Component {
     constructor(id, x, y, width, height, className, kinetic) {
         super(id, x, y, width, height, className, kinetic);
         this.jumping = false;
         this.onPlatform = false;
+        this.lastPlatform = null;
     }
-
 
     tick(commands) {
         this.oldx = this.x;
@@ -23,7 +24,7 @@ class Player extends Component {
             this.x += speed;
         }
         if (commands.up && !this.jumping) {
-            this.vy = -15;
+            this.vy = -jumpForce;
         }
 
 
@@ -41,15 +42,17 @@ class Player extends Component {
                     } else {
                         this.x = p.x - this.width;
                     }
-                    console.log("intersect X");
+                    // console.log("intersect X");
                 }
 
                 if (this.oldx + this.width > p.x && this.oldx < p.x + p.width &&
                     this.y + this.height > p.y && this.y < p.y + p.height) {
                     if (this.vy > 0) {
                         this.y = p.y - this.height;
+
                         if (this.onPlatform == false) {
-                            console.log("intersecting w platform top")
+                            console.log("intersecting w platform top");
+                            this.lastPlatform = p;
                             this.onPlatform = true;
                         }
 
@@ -57,16 +60,18 @@ class Player extends Component {
                         this.y = p.y + this.height;
                     }
                     this.vy = 0;
-                    console.log("intersect Y");
+                    // console.log("intersect Y");
                     intersectingY = true;
 
                 }
             }
+            p.tick();
         });
-
+        
         if (this.x < 0) { // Wall/Windows Collision || this.x + this.width > windowRight
             this.x = this.oldx;
         }
+
 
         this.jumping = (this.y <= windowBottom && intersectingY == false);
         if (this.y > windowBottom) { // Ground/Window Collision
@@ -76,9 +81,8 @@ class Player extends Component {
 
         if (this.jumping && this.vy < 0 && this.onPlatform) { // Jumping off platform FIXME: falling off platform does not onPlatform = false
             this.onPlatform = false;
-            Platforms.push(
-                new Platform("platorm_" + Platforms.length + 1, this.x + 250, this.y, 100, 100, 'platform')
-            );
+            const id = "platorm_" + Platforms.length + 1;
+            spawnPlatform(id, this.lastPlatform);
         }
 
         if (this.x > window.innerWidth / 2) { // Camera scrolling
@@ -87,6 +91,15 @@ class Player extends Component {
 
         this.animate();
     }
+}
+
+function spawnPlatform(id, p) {
+    Platforms.push(
+        new Platform(id, p.x + 250, p.y, 100, 100, 'platform')
+    );
+
+    const index = Platforms.findIndex(x => x.id == p.id);
+    Platforms[index].kinetic = false;
 }
 
 function rectIntersect(x1, y1, w1, h1, x2, y2, w2, h2) {
