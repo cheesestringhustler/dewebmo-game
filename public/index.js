@@ -7,6 +7,8 @@ const ms = 1000 / fps;
 
 let gameOver = false;
 
+const platformSprites = ['thwomp_1.png', 'thwomp_2.png', 'thwomp_3.png', 'thwomp_4.png', 'thwomp_5.png', 'thwomp_6.png'];
+
 const player = new Player('player', 10, window.innerHeight - 300, 80, 150, null, false);
 
 let Floors = [
@@ -14,10 +16,14 @@ let Floors = [
 ];
 
 let Platforms = [
-    new Platform('platform1', 500, window.innerHeight - 250, 200, 200, 'platform', true, ['thwomp_1.png', 'thwomp_2.png', 'thwomp_3.png', 'thwomp_4.png', 'thwomp_5.png', 'thwomp_6.png'])
+    new Platform('platform_0', 500, window.innerHeight - 250, 200, 200, 'platform', true, platformSprites)
 ];
 
-// document.body.style.width = '2000px';
+for (let i = 1; i < 4; i++) {
+    Platforms.push(
+        new Platform('platform_' + (i + 1), 500 + (500 * i), window.innerHeight - 250, 200, 200, 'platform', true, platformSprites)
+    );
+}
 
 player.anim.onfinish = () => {
     //Player Movement

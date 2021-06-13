@@ -21,25 +21,26 @@ var highscores: Player[] = [];
 
 app.post("/writeScore", function (req, res) {
   const body = req.parsedBody;
-  if (
-    body["score"] !== undefined && body["score"] !== "" &&
-    body["name"] !== undefined && body["name"] !== ""
-  ) {
+  if (body["score"] !== undefined && body["score"] !== "" &&
+    body["name"] !== undefined && body["name"] !== "") {
+
     const p: Player = { name: body["name"], score: parseInt(body["score"]) };
 
     loadScores().then(() => {
       highscores.push(p);
 
       const write = Deno.writeTextFile("./scores.json", JSON.stringify(highscores));
-
-      console.log("Writing score:");
-      console.log(p);
-
       write.then(() => {
+        console.log("Writing score:");
+        console.log(p);
         res.setStatus(200);
         res.send("received new score");
       });
-    });
+      
+    }).catch(err => {
+      res.setStatus(500);
+      res.send("error " +err.message);
+    });;
     
   } else {
     res.setStatus(500);
@@ -54,9 +55,11 @@ app.get("/getScores", function (req, res) {
 
     console.log("Listing " + highscores.length + " scores");
     // console.log(highscores);
-
     res.json(highscores);
-  });
+  }).catch(err => {
+    res.setStatus(500);
+    res.send("error " +err.message);
+  });;
 });
 
 function loadScores() {

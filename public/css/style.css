@@ -64,5 +64,9 @@ body {
     height: 195px;
     overflow-y: scroll;
     margin-bottom: 30px;
+    margin-top: 10px;
+}
 
+#highscoreList ol { 
+    margin-top: 10px;
 }

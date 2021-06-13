@@ -29,12 +29,13 @@ class Player extends Component {
 
         getScores().then((scores) => {
             let list = document.createElement("ol");
+            highscoreList.innerHTML = "";
+            highscoreList.appendChild(document.createTextNode("Other Highscores:"))
             scores.forEach(score => {
                 let text = document.createElement("li");
                 text.textContent = score.name + ": " + score.score;
                 list.appendChild(text);
             });
-            highscoreList.innerHTML = "";
             highscoreList.appendChild(list);
         })
         .catch((err) => {
@@ -104,10 +105,13 @@ class Player extends Component {
                             Platforms[p.getIndex()].fallAni();
 
                             const id = "platorm_" + Platforms.length + 1;
+                            console.log(p.getIndex())
                             if (this.lastPlatform != this.currentPlatform) {
-                                spawnPlatform(id, this.currentPlatform);
-                                this.lastPlatform = this.currentPlatform;
                                 this.increaseScore();
+                                if (p.getIndex() >= 3 && Platforms.length <= 15) {
+                                    spawnPlatform(id, this.currentPlatform);
+                                    this.lastPlatform = this.currentPlatform;
+                                }
                             }
                         }
 
@@ -168,6 +172,14 @@ class Player extends Component {
             // Jumping off platform FIXME: falling off platform does not onPlatform = false
             if (this.jumping && this.vy < 0 && this.onPlatform) {
                 this.onPlatform = false;
+                if (Platforms.length >= 15) {
+                    if (this.lastPlatform != this.currentPlatform) {
+                        const id = "platorm_" + Platforms.length + 1;
+                        spawnPlatform(id, this.currentPlatform);
+                        this.lastPlatform = this.currentPlatform;
+                        // this.increaseScore();
+                    }
+                }
             }
 
             // Camera scrolling
