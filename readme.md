@@ -19,10 +19,9 @@ alternativly you can run the electron app in addition to the server (see below)
 cd public/
 npm run start 
 
-- or access the build in public/dist
 - or create your own build with:
 cd public/
-npm run dist
+npm run dist (find the application in public/dist)
 
 # Game Controls
 use **A** and **D** to move the character left and right
