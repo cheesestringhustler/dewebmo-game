@@ -6,9 +6,13 @@ in my experience chrome seems to work best
 
 # Requirements
 deno https://deno.land/#installation
+## Optionally
+electron, electron-builder via npm i -D
 
-# Run Locally
+# Run Server Locally
 deno run --allow-net --allow-read --allow-write server.ts
+access the index.html via the browser on http://localhost:8080
+alternativly you can run the electron app in addition to the server (see below)
 
 # Run Locally with Electron
 - to run electron locally:
