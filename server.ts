@@ -3,14 +3,15 @@ import {
   opine,
   urlencoded,
   serveStatic,
-} from "https://deno.land/x/opine@1.2.0/mod.ts";
-import { opineCors } from "https://deno.land/x/cors@v1.2.1/opineCors.ts";
+  opineCors
+} from  "./deps.ts";
 
 const app = opine();
+const port = 8080;//Number(Deno.env.get("PORT") || 8080);
 
 app.use(json()); // for parsing application/json
 app.use(urlencoded()); // for parsing application/x-www-form-urlencoded
-app.use(opineCors());
+app.use(opineCors.opineCors());
 
 interface Player {
   name: string;
@@ -74,4 +75,4 @@ function loadScores() {
 
 app.use(serveStatic("./public"));
 
-app.listen(8080, () => console.log("Listening on http://localhost:8080"));
+app.listen(port, () => console.log("Listening on http://localhost:"+port));

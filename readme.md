@@ -2,6 +2,7 @@
 the **public** folder the website with the game
 highscore are stored in the **scores.json** file
 the **server.ts** file is listening on http://localhost:8080
+in my experience chrome seems to work best
 
 # Requirements
 deno https://deno.land/#installation
