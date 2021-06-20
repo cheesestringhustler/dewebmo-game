@@ -10,6 +10,16 @@ deno https://deno.land/#installation
 # Run Locally
 deno run --allow-net --allow-read --allow-write server.ts
 
+# Run Locally with Electron
+- to run electron locally:
+cd public/
+npm run start 
+
+- or access the build in public/dist
+- or create your own build with:
+cd public/
+npm run dist
+
 # Game Controls
 use **A** and **D** to move the character left and right
 use **W** to jump, can also be used simultaneously with A and D
