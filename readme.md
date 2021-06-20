@@ -7,7 +7,7 @@ in my experience chrome seems to work best
 # Requirements
 deno https://deno.land/#installation
 
-# Running
+# Run Locally
 deno run --allow-net --allow-read --allow-write server.ts
 
 # Game Controls
