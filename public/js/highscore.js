@@ -1,6 +1,8 @@
+const endpoint = "https://us-central1-manuel-lampert.cloudfunctions.net/HSLU_DEWEBMO_Highscores"; //"http://localhost:8080"
+
 function getScores() {
     return new Promise(function (resolve, reject) {
-        fetch('http://localhost:8080/getScores')
+        fetch(endpoint+'/getScores')
             .then(response => response.json())
             .then(data => resolve(data))
             .catch(err => reject(err));
@@ -16,7 +18,7 @@ function saveScore() {
             data.append("name", name);
             data.append("score", player.score);
         
-            fetch("http://localhost:8080/writeScore", {
+            fetch(endpoint+"/writeScore", {
                 method: "POST",
                 body: data
             }).then(res => {
